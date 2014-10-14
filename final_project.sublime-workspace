@@ -1,0 +1,275 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"wai",
+				"wait"
+			],
+			[
+				"wait",
+				"wait2"
+			],
+			[
+				"radon",
+				"randonVar"
+			],
+			[
+				"inpu",
+				"input2"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"lis",
+				"list-style-image"
+			],
+			[
+				"loe",
+				"lower-roman"
+			],
+			[
+				"text",
+				"text-indent"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"font",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Lua Dev/Lua.sublime-build",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Lua Dev",
+				"Package Control: Upgrade/Overwrite All Packages"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/bruno/Documents/Classes_Fall/CST 311/final_project/Makefile.GNUmakefile",
+		"/Users/bruno/Documents/Classes_Fall/CST 336/group_assignments/v2.php",
+		"/Users/bruno/Documents/Classes_Fall/CST 336/group_assignments/v1.html",
+		"/Users/bruno/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/bruno/Documents/Classes_Fall/CST 311/Homeworks/hw2/socket.py",
+		"/Users/bruno/Documents/Classes_Fall/CST 336/team_project/people.sql",
+		"/Users/bruno/Documents/Classes_Fall/CST 336/team_project/projects.sql",
+		"/Users/bruno/Documents/Classes_Fall/CST 336/team_project/teachers.sql",
+		"/Users/bruno/Documents/Classes_Fall/CST 311/Lua Learning/lesson 3/loops.lua",
+		"/Users/bruno/Documents/Classes_Fall/CST 311/Lua Learning/lesson 2/lesson2.lua",
+		"/Users/bruno/Documents/Classes_Fall/CST 311/Lua Learning/hello_world.lua",
+		"/Users/bruno/Documents/Aptana Studio 3 Workspace/MyHomepage/img/lab.png",
+		"/Users/bruno/Documents/Classes Fall/CST 336/Assigments/WebPages/Week1/index2.html",
+		"/Users/bruno/Documents/Classes Fall/CST 336/Assigments/WebPages/Week1/css/myStyles.css",
+		"/Users/bruno/Documents/Classes Fall/CST 336/Assigments/WebPages/Week1/index.html",
+		"/Users/bruno/Documents/Classes Fall/CST 336/Assigments/WebPages/Week1/index3.html",
+		"/Users/bruno/Documents/Classes Fall/CST 201/Pictures (Training/wordle text"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			");",
+			"[value-3]",
+			"\"10\"",
+			"\"3\"",
+			"\"2\"",
+			"\"1\"",
+			"\\n",
+			"1",
+			");",
+			"value-1]",
+			"VALUES",
+			"VALUES ",
+			") VALUES",
+			");",
+			"studentId",
+			"VALUES (",
+			"VALUES",
+			"'T'",
+			"\"Alan\",\"Cook\"",
+			"'S');",
+			", `courseYear`",
+			"	",
+			"`courseYear`",
+			"`student`",
+			"student",
+			");",
+			"\n",
+			", ",
+			"n,",
+			"\"CST",
+			"VALUES (",
+			"VALUES ",
+			"CST",
+			"CST [0-9]{3}",
+			"CST",
+			"\\n",
+			"[value-5]",
+			"[value-4]",
+			"[value-3]",
+			"VALUES (",
+			"[value-1]",
+			"[value-2]",
+			"	",
+			"[value-1]",
+			"])",
+			"[value-1]",
+			"	",
+			"input",
+			"<option>",
+			"on>",
+			"\\t",
+			",",
+			"Lab",
+			"lab.png",
+			"Lab",
+			"lab",
+			"Assignment",
+			"assignments.png",
+			"&nbsp; &nbsp;",
+			"</i>",
+			"<i>"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\"\\n",
+			"\"CST {1}\"",
+			"\\nCST",
+			";\\n",
+			",",
+			"\\t",
+			"&nbsp; &nbsp; &nbsp; &nbsp;",
+			"</u>",
+			"<u>"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
