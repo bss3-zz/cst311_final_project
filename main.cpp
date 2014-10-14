@@ -6,7 +6,7 @@
 using namespace std;
 
 struct edge;
-
+//test
 struct node {
     char name;
     int id;
