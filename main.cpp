@@ -56,7 +56,7 @@ int main(){
         int source, destination, weight;
         scanf("%d %d %d", &source,&destination,&weight);
         printf("%d %d %d\n", source,destination,weight);
-        
+        printf("Joao Test");
         //Creating the node
     }
     
