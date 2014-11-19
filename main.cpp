@@ -1,22 +1,75 @@
 #include <iostream>
 #include <string>
-#include <stdio.h>
-#include <vector>
+#include <list>
+#include <climits>
+#include <queue>
+
+//for debug purposes
+#include <typeinfo>
 
 using namespace std;
 
-struct edge;
-//test
-struct node {
-    char name;
+class Edge;
+
+class Node {
+public:
+    string name;
     int id;
+    unsigned long int distance;
+    Node *from;
     bool visited;
-    edge *adjacentList;
+    list<Edge> adjacentList;
+    
+    Node(string name, int id, unsigned long int distance, bool visited, Node *from){
+        this->name = name;
+        this->id = id;
+        this->distance = distance;
+        this->visited = visited;
+        this->from = from;
+    }
+    
+    Node(string name, int id, unsigned long int distance, bool visited){
+        this->name = name;
+        this->id = id;
+        this->distance = distance;
+        this->visited = visited;
+        this->from = NULL;
+    }
+    
+    Node(char *name, int id){
+        this->name = name;
+        this->id = id;
+        this->distance = ULONG_MAX;
+        this->visited = false;
+        this->from = NULL;
+    }
+    
+    Node(){
+        this->distance = ULONG_MAX;
+        this->visited = false;
+        this->from = NULL;
+    }
 };
 
-struct edge {
-    node *from, *to;
-    edge *next, *previous;
+
+struct NodeCompare
+{
+    bool operator()(const Node &n1, const Node &n2) const
+    {
+        return n1.distance < n2.distance;
+    }
+};
+
+class Edge {
+public:
+    Node *from, *to;
+    int weight;
+    
+    Edge(Node a, Node b, int weight){
+        this->from = &a;
+        this->to = &b;
+        this->weight = weight;
+    }
 };
 
 int main(){
@@ -32,21 +85,38 @@ int main(){
     }
     
     //Reading the information about the network that will be processed
-    int n_nodes, n_edges, start_node;
-    scanf("%d %d %d", &n_nodes, &n_edges, &start_node);
+    int n_nodes, n_edges, s_node;
+    cin >> n_nodes;
+    cin >> n_edges;
+    cin >> s_node;
     
-    printf("We have %d nodes with %d edges and we will start from %d edge.\n",n_nodes,n_edges,start_node);
+    printf("We have %d nodes with %d edges and we will start from %d edge.\n",n_nodes,n_edges,s_node);
     
     //Creating the vector that will store the graph of the network
-    vector<node> nodes;
+    list<Node> nodes;
+    
+    //teste
+    Node *start_node;
     
     printf("Loading nodes...\n");
     //Reading the node description from file
     for (int i = 0; i < n_nodes; i++) {
-        node temp;
-        scanf("%d %s",&temp.id, &temp.name);
+        Node *temp = new Node();
+        int temp_id;
+        string temp_name;
+        cin >> temp_id;
+        cin >> temp_name;
+        
+        //Init distances
+        if(temp_id == s_node){ //0 of distance if the node is the start node
+            temp = new Node(temp_name,temp_id,0,false);
+            start_node = temp;
+        }else{ //Infinite distance if the node is not the start node
+            temp = new Node(temp_name,temp_id,ULONG_MAX,false);
+        }
+        
         //Inserting the nodes into the vector of nodes
-        nodes.push_back(temp);
+        nodes.push_back(*temp);
     }
     
     printf("We have %lu nodes to work.\n", nodes.size());
@@ -54,12 +124,22 @@ int main(){
     
     for (int i = 0; i < n_edges; i++) {
         int source, destination, weight;
-        scanf("%d %d %d", &source,&destination,&weight);
+        cin >> source;
+        cin >> destination;
+        cin >> weight;
+        cout << source << " " << destination << " " << weight << endl;
         printf("%d %d %d\n", source,destination,weight);
-        printf("Test Bruno!");
-        
         //Creating the node
     }
+    
+    
+    priority_queue <Node,vector<Node>,NodeCompare> pq; //Creating a priority queue to store the nodes during the computation of the shortest path
+    
+    //Adding the start node
+    pq.push(*start_node);
+    
+    cout << typeid(pq).name() << '\n';
+//    Node hahaha = pq.pop();
     
     return 0;
 }
