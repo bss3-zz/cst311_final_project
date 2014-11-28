@@ -39,13 +39,13 @@ public:
     Node(char *name, int id){
         this->name = name;
         this->id = id;
-        this->distance = ULONG_MAX;
+        this->distance = -1;
         this->visited = false;
         this->from = NULL;
     }
     
     Node(){
-        this->distance = ULONG_MAX;
+        this->distance = -1;
         this->visited = false;
         this->from = NULL;
     }
@@ -62,15 +62,22 @@ struct NodeCompare
 
 class Edge {
 public:
-    Node *from, *to;
+    int from, to;
     int weight;
     
-    Edge(Node a, Node b, int weight){
-        this->from = &a;
-        this->to = &b;
+    Edge(int a, int b, int weight){
+        this->from = a;
+        this->to = b;
         this->weight = weight;
     }
 };
+
+void linkEdges(Edge * TempEdge, list<Node> nodes){//Count nodes from 0, this fuction will distribuite the edges
+    nodes[TempEdge->from].push_back(*TempEdge);
+    nodes[TempEdge->to].push_back(*TempEdge);   // Now both nodes have the edge in your knowledge
+    return ;
+};
+
 
 int main(){
     FILE *input, *output;
@@ -112,7 +119,7 @@ int main(){
             temp = new Node(temp_name,temp_id,0,false);
             start_node = temp;
         }else{ //Infinite distance if the node is not the start node
-            temp = new Node(temp_name,temp_id,ULONG_MAX,false);
+            temp = new Node(temp_name,temp_id,-1,false);
         }
         
         //Inserting the nodes into the vector of nodes
@@ -128,6 +135,8 @@ int main(){
         cin >> destination;
         cin >> weight;
         cout << source << " " << destination << " " << weight << endl;
+        Edge *temp2 = new Edge(source,destination,weight);
+        linkEdges(temp2,nodes); // distribuite the edges
         printf("%d %d %d\n", source,destination,weight);
         //Creating the node
     }
