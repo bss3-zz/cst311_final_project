@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
+#include <map>
 #include <list>
+#include <utility>
 #include <climits>
 #include <queue>
 
@@ -60,14 +62,20 @@ struct NodeCompare
     }
 };
 
+ostream& operator<<(ostream& os, const Node& nd)
+{
+    os << "Name: " << nd.name << " ID: " << nd.id;
+    return os;
+}
+
 class Edge {
 public:
-    Node *from, *to;
+    int from, to;
     int weight;
     
-    Edge(Node a, Node b, int weight){
-        this->from = &a;
-        this->to = &b;
+    Edge(int a, int b, int weight){
+        this->from = a;
+        this->to = b;
         this->weight = weight;
     }
 };
@@ -93,15 +101,11 @@ int main(){
     printf("We have %d nodes with %d edges and we will start from %d edge.\n",n_nodes,n_edges,s_node);
     
     //Creating the vector that will store the graph of the network
-    list<Node> nodes;
-    
-    //teste
-    Node *start_node;
+    map<int,Node> nodes;
     
     printf("Loading nodes...\n");
     //Reading the node description from file
     for (int i = 0; i < n_nodes; i++) {
-        Node *temp = new Node();
         int temp_id;
         string temp_name;
         cin >> temp_id;
@@ -109,15 +113,17 @@ int main(){
         
         //Init distances
         if(temp_id == s_node){ //0 of distance if the node is the start node
-            temp = new Node(temp_name,temp_id,0,false);
-            start_node = temp;
+            nodes[temp_id].distance = 0;
         }else{ //Infinite distance if the node is not the start node
-            temp = new Node(temp_name,temp_id,ULONG_MAX,false);
+            nodes[temp_id].distance = -1;
         }
         
-        //Inserting the nodes into the vector of nodes
-        nodes.push_back(*temp);
+        nodes[temp_id].id = temp_id;
+        nodes[temp_id].name = temp_name;
+        nodes[temp_id].visited = false;
     }
+    
+    //All nodes now has been loaded into the structures
     
     printf("We have %lu nodes to work.\n", nodes.size());
     printf("Loading edges...\n");
@@ -128,18 +134,14 @@ int main(){
         cin >> destination;
         cin >> weight;
         cout << source << " " << destination << " " << weight << endl;
-        printf("%d %d %d\n", source,destination,weight);
-        //Creating the node
+        Edge *temp_edge = new Edge(source,destination,weight);
+        nodes[source].adjacentList.push_back(*temp_edge);
+        nodes[destination].adjacentList.push_back(*temp_edge);
     }
-    
     
     priority_queue <Node,vector<Node>,NodeCompare> pq; //Creating a priority queue to store the nodes during the computation of the shortest path
     
-    //Adding the start node
-    pq.push(*start_node);
     
-    cout << typeid(pq).name() << '\n';
-//    Node hahaha = pq.pop();
     
     return 0;
 }
