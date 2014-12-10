@@ -92,7 +92,7 @@ ostream& operator<<(ostream& os, const Edge& edge)
 
 //end of Operator overloads
 
-void print_table_line(int step, string nprime, map<int,Node> nodes, int n_nodes){
+void print_table_line(int step, string nprime, map<int,Node> nodes, int n_nodes, int s_node){
     cout << step << '\t' << '\t' << nprime;
     
     int n_tabs = (int) ceil((((n_nodes * 2.0) - nprime.length())/4.0));
@@ -103,19 +103,24 @@ void print_table_line(int step, string nprime, map<int,Node> nodes, int n_nodes)
     
     for( map<int,Node>::iterator it = nodes.begin(); it != nodes.end(); ++it){ //Iterating over the neighbor list
         Node header = it->second;
-        if(header.visited == true){
-            cout << '\t' << '\t' << '\t';
-        }else if(header.distance == -1){
-            cout << "∞" << '\t' << '\t' << '\t';
-        }else{
-            cout << header.distance << ", " << nodes[header.from].name << '\t' << '\t';
+        
+        if(header.id != s_node){
+            
+            if(header.visited == true){
+                cout << '\t' << '\t' << '\t';
+            }else if(header.distance == -1){
+                cout << "∞" << '\t' << '\t' << '\t';
+            }else{
+                cout << header.distance << ", " << nodes[header.from].name << '\t' << '\t';
+            }
+            
         }
     }
     cout << endl;
 }
 
 
-void print_header(int n_nodes, map<int,Node> nodes){
+void print_header(int n_nodes, int s_node, map<int,Node> nodes){
     
     //printing output header
     cout << "step" << '\t' << "N'";
@@ -128,7 +133,9 @@ void print_header(int n_nodes, map<int,Node> nodes){
     
     for( map<int,Node>::iterator it = nodes.begin(); it != nodes.end(); ++it){ //Iterating over the neighbor list
         Node header = it->second;
-        cout << "D(" << header.name << "),p(" << header.name << ")" << '\t';
+        if(header.id != s_node){
+            cout << "D(" << header.name << "),p(" << header.name << ")" << '\t';
+        }
     }
     
     cout << endl;
@@ -201,12 +208,10 @@ int main(){
     cin >> n_nodes;
     cin >> s_node;
     
-    printf("We have %d nodes starting from node of id %d.\n",n_nodes,s_node);
-    
     //Creating map that will store the state of the network
     map<int,Node> nodes;
     
-    printf("Loading nodes...\n");
+//    printf("Loading nodes...\n");
     //Reading the node description from file
 
     string name = "`";
@@ -237,7 +242,7 @@ int main(){
         }
         
     }
-
+    
     int weight;
     for (l = 0; l < n_nodes; l++) {
         for (row = 0; row < n_nodes; row++) {
@@ -256,7 +261,7 @@ int main(){
 
     
     //printing output header
-    print_header(n_nodes,nodes);
+    print_header(n_nodes, s_node, nodes);
     
     priority_queue <Node,vector<Node>,NodeCompare> pq; //Creating a priority queue to store the nodes during the computation of the shortest path
     
@@ -288,7 +293,7 @@ int main(){
                 }
             }
             
-            print_table_line(count++,nprime,nodes, n_nodes);
+            print_table_line(count++,nprime,nodes, n_nodes, s_node);
             
         }
 //        else{
